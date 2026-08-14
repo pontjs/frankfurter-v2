@@ -1,4 +1,4 @@
 import frankfurterV2Client from "../src";
 
-const response = await frankfurterV2Client.common.getRate("EUR", "USD", {});
+const response = await frankfurterV2Client.getRate("EUR", "USD", {});
 console.log(response);

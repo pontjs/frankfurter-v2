@@ -47,7 +47,7 @@ test("the built SDK completes a real HTTP round trip through its public API", as
   const esm = await import(
     `${pathToFileURL(resolve(repositoryRoot, "dist/index.mjs")).href}?e2e=${Date.now()}`,
   );
-  const result = await esm.default.common.getRate("EUR", "USD", {
+  const result = await esm.default.getRate("EUR", "USD", {
     date: "2026-08-14",
   });
   assert.deepEqual(result, payload);

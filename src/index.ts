@@ -1,4 +1,4 @@
-import { createGracefulClient } from "@pontx/sdk";
+import { createGracefulClient, type GracefulClient } from "@pontx/sdk";
 import { APIs } from "./apis/frankfurter/apis";
 import { specMeta } from "./apis/frankfurter/apiMeta";
 
@@ -8,7 +8,7 @@ const frankfurterV2Client = createGracefulClient<APIs>({
   baseRequestFn: (url, init) => {
     return fetch(url, init).then(res => res.json());
   },
-});
+}) as GracefulClient<APIs> & APIs["common"];
 
 export { frankfurterV2Client };
 

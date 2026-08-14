@@ -15,7 +15,7 @@ npm install @pontx/frankfurter-v2
 ```ts
 import frankfurterV2Client from "@pontx/frankfurter-v2";
 
-const result = await frankfurterV2Client.common.getRate("EUR", "USD", {});
+const result = await frankfurterV2Client.getRate("EUR", "USD", {});
 ```
 
 ## CLI

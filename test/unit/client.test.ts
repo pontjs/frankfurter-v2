@@ -27,7 +27,7 @@ describe("@pontx/frankfurter-v2", () => {
     vi.stubGlobal("fetch", fetchMock);
 
     await expect(
-      frankfurterV2Client.common.getRate("EUR", "USD", {
+      frankfurterV2Client.getRate("EUR", "USD", {
         date: "2026-08-14",
       }),
     ).resolves.toEqual(payload);
@@ -39,5 +39,9 @@ describe("@pontx/frankfurter-v2", () => {
         headers: { Accept: "application/json" },
       }),
     );
+  });
+
+  it("keeps the original controller path as a backwards-compatible alias", () => {
+    expect(frankfurterV2Client.common.getRate).toBeTypeOf("function");
   });
 });
