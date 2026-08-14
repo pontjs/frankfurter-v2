@@ -12,7 +12,7 @@ export default runCLI({
       return `import frankfurterV2Client from "@pontx/frankfurter-v2";
 
 async function main() {
-  const response = await frankfurterV2Client.common.getRate("EUR", "USD", {});
+  const response = await frankfurterV2Client.getRate("EUR", "USD", {});
   console.log(response);
 }
 
