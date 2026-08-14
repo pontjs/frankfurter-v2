@@ -1,6 +1,7 @@
 {
   "name": "@pontx/frankfurter-v2",
   "version": "0.1.0",
+  "packageManager": "pnpm@9.15.4",
   "description": "Type-safe SDK and CLI for the official Frankfurter v2 API",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -19,9 +20,13 @@
     "build": "tsup && pontx cli build",
     "dev": "tsup --watch",
     "pontx": "pontx generate && node scripts/fix-generated.mjs",
+    "generate:check": "pnpm pontx && git diff --exit-code -- src/apis",
     "type-check": "tsc --noEmit",
+    "test:unit": "node scripts/run-unit-tests.mjs",
+    "test:e2e": "node --test test/e2e/*.test.mjs",
+    "quality": "pnpm generate:check && pnpm type-check && pnpm test:unit && pnpm build && pnpm test:e2e",
     "example": "tsx examples/index.ts",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "pnpm quality"
   },
   "keywords": [
     "frankfurter-v2",
@@ -34,7 +39,7 @@
   ],
   "author": "Pontx contributors",
   "license": "MIT",
-  "homepage": "https://pontx-hub.vercel.app/en/sdks/frankfurter-v2",
+  "homepage": "https://pontx.dev/en/sdks/frankfurter-v2",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/pontjs/frankfurter-v2.git"
@@ -46,7 +51,8 @@
     "@types/node": "^22.0.0",
     "tsup": "^8.0.0",
     "tsx": "^4.21.0",
-    "typescript": "^5.6.0"
+    "typescript": "^5.6.0",
+    "vitest": "^3.2.4"
   },
   "dependencies": {
     "@pontx/sdk": "1.0.0-beta.0",
