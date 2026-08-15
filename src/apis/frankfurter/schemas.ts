@@ -149,7 +149,7 @@ export type Provider = {
   /**
    * @description How often the provider publishes rates. Determines the unit of publishes_missed: a count of days, ISO weeks, or calendar months. Null for historical-only providers with no scheduled cadence.
    */
-  publish_cadence?: any;
+  publish_cadence?: 'daily' | 'weekly' | 'monthly' | null;
   /**
    * @description Number of expected publishes missed since end_date, in units of publish_cadence. For daily providers, counts scheduled publish days strictly between end_date and today. For weekly and monthly providers, counts ISO weeks or calendar months between the latest imported bucket and the bucket whose publish window has already started. Null when the provider has no scheduled cadence or no imported data.
    */
