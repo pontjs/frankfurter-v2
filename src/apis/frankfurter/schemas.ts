@@ -52,7 +52,7 @@ export type Currency = {
   /**
    * @description ISO 4217 numeric code
    */
-  iso_numeric?: any;
+  iso_numeric?: string;
   /**
    * @description Full currency name
    */
@@ -60,15 +60,15 @@ export type Currency = {
   /**
    * @description Currency symbol
    */
-  symbol?: any;
+  symbol?: string;
   /**
    * @description Earliest available date
    */
-  start_date?: any;
+  start_date?: string;
   /**
    * @description Latest available date
    */
-  end_date?: any;
+  end_date?: string;
 }
 
 /**
@@ -82,7 +82,7 @@ export type CurrencyDetail = {
   /**
    * @description ISO 4217 numeric code
    */
-  iso_numeric?: any;
+  iso_numeric?: string;
   /**
    * @description Full currency name
    */
@@ -90,7 +90,7 @@ export type CurrencyDetail = {
   /**
    * @description Currency symbol
    */
-  symbol?: any;
+  symbol?: string;
   /**
    * @description Provider keys that publish this currency
    */
@@ -121,39 +121,39 @@ export type Provider = {
   /**
    * @description ISO 3166-1 alpha-2 country code
    */
-  country_code?: any;
+  country_code?: string;
   /**
    * @description Official rate type as used by the source
    */
-  rate_type?: any;
+  rate_type?: string;
   /**
    * @description Base currency for published rates
    */
-  pivot_currency?: any;
+  pivot_currency?: string;
   /**
    * @description Link to the data source
    */
-  data_url?: any;
+  data_url?: string;
   /**
    * @description Link to terms of use
    */
-  terms_url?: any;
+  terms_url?: string;
   /**
    * @description Earliest available date
    */
-  start_date?: any;
+  start_date?: string;
   /**
    * @description Latest available date
    */
-  end_date?: any;
+  end_date?: string;
   /**
    * @description How often the provider publishes rates. Determines the unit of publishes_missed: a count of days, ISO weeks, or calendar months. Null for historical-only providers with no scheduled cadence.
    */
-  publish_cadence?: 'daily' | 'weekly' | 'monthly' | null;
+  publish_cadence?: any;
   /**
    * @description Number of expected publishes missed since end_date, in units of publish_cadence. For daily providers, counts scheduled publish days strictly between end_date and today. For weekly and monthly providers, counts ISO weeks or calendar months between the latest imported bucket and the bucket whose publish window has already started. Null when the provider has no scheduled cadence or no imported data.
    */
-  publishes_missed?: any;
+  publishes_missed?: number;
   /**
    * @description Currency codes covered by this provider
    */

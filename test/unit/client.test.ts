@@ -41,7 +41,7 @@ describe("@pontx/frankfurter-v2", () => {
     );
   });
 
-  it("keeps the original controller path as a backwards-compatible alias", () => {
-    expect(frankfurterV2Client.common.getRate).toBeTypeOf("function");
+  it("does not synthesize a common controller for untagged Endpoints", () => {
+    expect(() => (frankfurterV2Client as any).common).toThrow('API "common" not found');
   });
 });

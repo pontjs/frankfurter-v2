@@ -23,7 +23,7 @@ const result = await frankfurterV2Client.getRate("EUR", "USD", {});
 ```bash
 npm install --global @pontx/frankfurter-v2
 pontx-frankfurter-v2 --help
-pontx-frankfurter-v2 call common.getRate --base EUR --quote USD --dry-run
+pontx-frankfurter-v2 call getRate --base EUR --quote USD --dry-run
 ```
 
 The package contains generated code and API metadata only. Exchange-rate data remains subject to the upstream providers' terms.

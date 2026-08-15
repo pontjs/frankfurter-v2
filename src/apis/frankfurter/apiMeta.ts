@@ -1,13 +1,13 @@
 export const specMeta = {
   name: "Frankfurter API",
-  hasTags: true,
+  hasTags: false,
   url: [
     {
       url: "https://api.frankfurter.dev/v2"
     }
   ],
   apis: {
-    "common/getRates": {
+    "getRates": {
       method: "GET",
       path: "/rates",
       consumes: [],
@@ -17,7 +17,7 @@ export const specMeta = {
       bodyParams: null
     },
 
-    "common/getRate": {
+    "getRate": {
       method: "GET",
       path: "/rate/{base}/{quote}",
       consumes: [],
@@ -27,7 +27,7 @@ export const specMeta = {
       bodyParams: null
     },
 
-    "common/getCurrency": {
+    "getCurrency": {
       method: "GET",
       path: "/currency/{code}",
       consumes: [],
@@ -37,7 +37,7 @@ export const specMeta = {
       bodyParams: null
     },
 
-    "common/getCurrencies": {
+    "getCurrencies": {
       method: "GET",
       path: "/currencies",
       consumes: [],
@@ -47,7 +47,7 @@ export const specMeta = {
       bodyParams: null
     },
 
-    "common/getProviders": {
+    "getProviders": {
       method: "GET",
       path: "/providers",
       consumes: [],
