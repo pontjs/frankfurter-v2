@@ -55,8 +55,8 @@
     "vitest": "^3.2.4"
   },
   "dependencies": {
-    "@pontx/sdk": "1.0.0-beta.0",
-    "pontx": "1.0.0-beta.3"
+    "@pontx/sdk": "1.0.0-beta.5",
+    "pontx": "1.0.0-beta.12"
   },
   "engines": {
     "node": ">=18.0.0"

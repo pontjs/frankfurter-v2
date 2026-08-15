@@ -5,9 +5,7 @@
 
 import type * as schemas from './schemas';
 
-// ============ common 模块 ============
-
-export declare namespace common {
+export declare namespace APIs {
   export type GetRatesParams = {
     /**
      * @description Specific date (YYYY-MM-DD). Cannot be combined with from/to.
@@ -67,14 +65,19 @@ export declare namespace common {
 
 }
 
-export type common = {
+// ============ API 集合类型 ============
+
+/**
+ * API 类型定义
+ */
+export type APIs = {
   /**
    * GET /rates
    * Returns exchange rates blended across providers. Without date params, returns the latest rates. Each record is a single currency pair. The response includes an identity record for the base currency (base equals quote, rate 1), subject to the quotes filter like any other record. Daily date ranges of any length are served, including full history. Limit: requests using `providers` or `expand=providers` recompute the blend per date, so at daily granularity they return 422 for ranges longer than 5 years. With `providers` naming at most 5 providers, a `quotes` list of at most 5 currencies lifts the cap; without `providers`, `expand=providers` ranges compute every currency regardless of `quotes`, so aggregate with `group=week` or `group=month`, add `providers`, or split the range into shorter requests.
    * @summary: Get exchange rates
    */
   getRates: (
-    params: common.GetRatesParams,
+    params: APIs.GetRatesParams,
     requestInit?: RequestInit,
   ) => Promise<Array<schemas.Rate>>;
 
@@ -92,7 +95,7 @@ export type common = {
      * @description Quote currency code
      */
     quote: string,
-    params: common.GetRateParams,
+    params: APIs.GetRateParams,
     requestInit?: RequestInit,
   ) => Promise<schemas.Rate>;
 
@@ -115,7 +118,7 @@ export type common = {
    * @summary: Get available currencies
    */
   getCurrencies: (
-    params: common.GetCurrenciesParams,
+    params: APIs.GetCurrenciesParams,
     requestInit?: RequestInit,
   ) => Promise<Array<schemas.Currency>>;
 
@@ -130,16 +133,5 @@ export type common = {
 
 };
 
-// ============ API 集合类型 ============
-
-/**
- * API 类型定义
- */
-export type APIs = {
-  /** common 模块 */
-  common: common;
-};
-
 export declare namespace APIs {
-  export { common };
 }
