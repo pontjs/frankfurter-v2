@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@pontx/sdk':
-        specifier: 1.0.0-beta.5
-        version: 1.0.0-beta.5(typescript@5.9.3)
+        specifier: 1.0.0-beta.6
+        version: 1.0.0-beta.6(typescript@5.9.3)
       pontx:
         specifier: 1.0.0-beta.12
         version: 1.0.0-beta.12
@@ -340,8 +340,8 @@ packages:
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
 
-  '@pontx/sdk@1.0.0-beta.5':
-    resolution: {integrity: sha512-hLQaJuCoTPI5Ph8JqQXX+ivV92VqRf4yxXX13K6DolstCG+ATOIBMFSW5m/ekbEM9xZChMAdHhO7ZpfgedchMg==}
+  '@pontx/sdk@1.0.0-beta.6':
+    resolution: {integrity: sha512-DuzN6ECujLgLsYypi1tZyW6jzNYy6saan7EtH5EdpT4Ot+vTnHznUcUFiJ/idhp8JhxPXn8CrvVZ03FsJLsifQ==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       typescript: '>=5.0.0'
@@ -1124,7 +1124,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
 
-  '@pontx/sdk@1.0.0-beta.5(typescript@5.9.3)':
+  '@pontx/sdk@1.0.0-beta.6(typescript@5.9.3)':
     dependencies:
       '@pontx/spec': 1.0.0-beta.4
     optionalDependencies:
