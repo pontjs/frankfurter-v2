@@ -1,5 +1,6 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 import frankfurterV2Client, {
+  createFrankfurterV2Client,
   frankfurterV2Client as namedClient,
 } from "../../src/index";
 
@@ -24,10 +25,10 @@ describe("@pontx/frankfurter-v2", () => {
         headers: { "content-type": "application/json" },
       }),
     );
-    vi.stubGlobal("fetch", fetchMock);
+    const client = createFrankfurterV2Client({ fetch: fetchMock });
 
     await expect(
-      frankfurterV2Client.getRate("EUR", "USD", {
+      client.getRate("EUR", "USD", {
         date: "2026-08-14",
       }),
     ).resolves.toEqual(payload);
@@ -42,6 +43,26 @@ describe("@pontx/frankfurter-v2", () => {
   });
 
   it("does not synthesize a common controller for untagged Endpoints", () => {
-    expect(() => (frankfurterV2Client as any).common).toThrow('API "common" not found');
+    const client = createFrankfurterV2Client();
+    expect(() => (client as any).common).toThrow('API "common" not found');
+  });
+
+  it("creates isolated clients with their own runtime origin", async () => {
+    const fetchMock = vi.fn().mockResolvedValue(
+      new Response(JSON.stringify({ rate: 1.1 }), {
+        headers: { "content-type": "application/json" },
+      }),
+    );
+    const client = createFrankfurterV2Client({
+      baseUrl: "https://rates.example.test/v2",
+      fetch: fetchMock,
+    });
+
+    await client.getRate("EUR", "USD", {});
+
+    expect(fetchMock).toHaveBeenCalledWith(
+      "https://rates.example.test/v2/rate/EUR/USD",
+      expect.any(Object),
+    );
   });
 });

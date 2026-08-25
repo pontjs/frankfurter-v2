@@ -13,9 +13,10 @@ npm install @pontx/frankfurter-v2
 ## SDK
 
 ```ts
-import frankfurterV2Client from "@pontx/frankfurter-v2";
+import { createFrankfurterV2Client } from "@pontx/frankfurter-v2";
 
-const result = await frankfurterV2Client.getRate("EUR", "USD", {});
+const client = createFrankfurterV2Client();
+const result = await client.getRate("EUR", "USD", {});
 ```
 
 ## CLI
