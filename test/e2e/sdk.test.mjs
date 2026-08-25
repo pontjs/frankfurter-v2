@@ -32,22 +32,11 @@ test("the built SDK completes a real HTTP round trip through its public API", as
   const address = server.address();
   assert(address && typeof address === "object");
   const localOrigin = `http://127.0.0.1:${address.port}`;
-  const nativeFetch = globalThis.fetch;
-  globalThis.fetch = (input, init) => {
-    const requested = new URL(String(input));
-    return nativeFetch(
-      new URL(`${requested.pathname}${requested.search}`, localOrigin),
-      init,
-    );
-  };
-  context.after(() => {
-    globalThis.fetch = nativeFetch;
-  });
-
   const esm = await import(
     `${pathToFileURL(resolve(repositoryRoot, "dist/index.mjs")).href}?e2e=${Date.now()}`,
   );
-  const result = await esm.default.getRate("EUR", "USD", {
+  const client = esm.createFrankfurterV2Client({ baseUrl: `${localOrigin}/v2` });
+  const result = await client.getRate("EUR", "USD", {
     date: "2026-08-14",
   });
   assert.deepEqual(result, payload);
@@ -58,6 +47,7 @@ test("the built SDK completes a real HTTP round trip through its public API", as
   const require = createRequire(import.meta.url);
   const cjs = require(resolve(repositoryRoot, "dist/index.js"));
   assert.equal(cjs.default, cjs.frankfurterV2Client);
+  assert.equal(typeof cjs.createFrankfurterV2Client, "function");
 });
 
 test("the CLI and npm package surface are publishable", async () => {
